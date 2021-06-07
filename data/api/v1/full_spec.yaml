@@ -10428,6 +10428,10 @@ components:
             an alert.'
           format: int64
           type: integer
+        monitor_name:
+          description: The monitor name is used for the alert title as well as for
+            all monitor dashboard widgets and SLOs.
+          type: string
         monitor_options:
           description: 'Object containing the options for a Synthetic test as a monitor
 
@@ -10443,6 +10447,12 @@ components:
               minimum: 0
               type: integer
           type: object
+        monitor_priority:
+          description: Integer from 1 (high) to 5 (low) indicating alert severity.
+          format: int32
+          maximum: 5
+          minimum: 1
+          type: integer
         noScreenshot:
           description: Prevents saving screenshots of the steps.
           type: boolean
@@ -13136,9 +13146,13 @@ components:
         day:
           description: The day value from the user request that contains the returned
             usage data. (If day was used the request)
+          format: date-time
+          type: string
         month:
           description: The month value from the user request that contains the returned
             usage data. (If month was used the request)
+          format: date-time
+          type: string
         pagination:
           $ref: '#/components/schemas/UsageAttributionPagination'
       type: object
